@@ -34,6 +34,7 @@ def draw_border():
         border_pen.forward(560)  # Right and Left sides
         border_pen.left(90)
 
+
 # Draw center line
 def draw_center_line():
     line = Turtle()
@@ -77,11 +78,11 @@ def pong():
     # Game loop
     game_is_on = True
     while game_is_on:
-        time.sleep(0.1)
+        time.sleep(ball.move_speed)
         game_window.update()
         ball.move()
         ball.detect_collision(l_paddle, r_paddle)
-        ball.detect_out_of_bounds()
+        ball.detect_out_of_bounds(scoreboard)
 
     game_window.exitonclick()
 

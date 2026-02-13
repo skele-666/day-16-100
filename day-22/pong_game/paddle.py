@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+MOVE_INCREMENT = 10
+
 
 class Paddle(Turtle):
     def __init__(self, position):
@@ -11,9 +13,9 @@ class Paddle(Turtle):
         self.goto(position)
 
     def up(self):
-        new_y = self.ycor() + 20
+        new_y = self.ycor() + MOVE_INCREMENT
         self.goto(self.xcor(), new_y)
 
     def down(self):
-        new_y = self.ycor() - 20
+        new_y = self.ycor() - MOVE_INCREMENT
         self.goto(self.xcor(), new_y)

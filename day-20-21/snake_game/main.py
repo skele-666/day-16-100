@@ -55,7 +55,7 @@ def setup_controls(snake, screen):
 
 
 # Detect collision with food, wall and tail
-def check_collisions(snake, food, scoreboard):
+def check_collisions(snake, food, scoreboard, file_path):
     # Detect collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
@@ -64,16 +64,14 @@ def check_collisions(snake, food, scoreboard):
 
     # Detect collision with wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        scoreboard.game_over()
-        return False
+        scoreboard.reset_scoreboard(file_path)
+        snake.reset()
 
     # Detect collision with tail
     for seg in snake.segments[1:]:
         if snake.head.distance(seg) < 10:
-            scoreboard.game_over()
-            return False
-
-    return True
+            scoreboard.reset_scoreboard(file_path)
+            snake.reset()
 
 
 # Snake game
@@ -93,7 +91,7 @@ def snake_game():
         time.sleep(0.1)  # Add pacing to the snake's movements
 
         snake.move()
-        game_is_on = check_collisions(snake, food, scoreboard)
+        check_collisions(snake, food, scoreboard, "./data.txt")
 
     screen.exitonclick()
 

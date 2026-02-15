@@ -5,7 +5,8 @@ print(contents)
 file.close()
 
 # Different way to open
-with open("my_file.txt") as file:
+# Absolute file path
+with open("/home/sleepy/PycharmProjects/day-16-100/day-24/my_file.txt") as file:
     contents = file.read()
     print(contents)
     # Don't need to manually close
